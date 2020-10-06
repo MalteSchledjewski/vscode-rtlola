@@ -1,0 +1,44 @@
+{
+    "name": "rtlola",
+    "displayName": "rtlola",
+    "description": "Support for the stream-based specification language RTLola",
+    "version": "0.0.1",
+    "publisher": "rtlola-team",
+    "engines": {
+        "vscode": "^1.49.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "rtlola",
+                "aliases": [
+                    "RTLola",
+                    "rtlola"
+                ],
+                "extensions": [
+                    ".lola",
+                    ".rtlola"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "rtlola",
+                "scopeName": "source.rtlola",
+                "path": "./syntaxes/rtlola.tmLanguage.json"
+            }
+        ]
+    },
+    "bugs": {
+        "url": "https://github.com/MalteSchledjewski/vscode-rtlola/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MalteSchledjewski/vscode-rtlola.git"
+    },
+    "homepage": "https://github.com/MalteSchledjewski/vscode-rtlola/blob/main/README.md"
+}
