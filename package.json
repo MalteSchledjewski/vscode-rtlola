@@ -2,7 +2,7 @@
     "name": "rtlola",
     "displayName": "rtlola",
     "description": "Support for the stream-based specification language RTLola",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "rtlola-team",
     "engines": {
         "vscode": "^1.49.0"
@@ -30,6 +30,13 @@
                 "language": "rtlola",
                 "scopeName": "source.rtlola",
                 "path": "./syntaxes/rtlola.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "rtlola",
+                "scopeName": "source.rtlola",
+                "path": "./snippets/snippets.json"
             }
         ]
     },

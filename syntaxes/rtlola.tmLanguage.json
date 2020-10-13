@@ -194,7 +194,7 @@
 			]
 		},
 		"frequency": {
-			"match": "@(\\s*(/\\*((?!\\*/).)*\\*/)?\\s*)((?:\\+\\-)?[0-9]+(\\.[0-9][0-9]*)?(e(\\+\\-)?[0-9]+)?(μHz|uHz|mHz|Hz|kHz|MHz|GHz)?)",
+			"match": "@(\\s*(/\\*((?!\\*/).)*\\*/)?\\s*)((\\+|-)?[0-9]+(\\.[0-9][0-9]*)?(e(\\+|-)?[0-9]+)?(μHz|uHz|mHz|Hz|kHz|MHz|GHz)?)",
 			"captures": {
 				"2": {
 					"name": "comment.block.rtlola"
@@ -205,7 +205,7 @@
 			}
 		},
 		"number": {
-			"match": "\\b((?:\\+\\-)?[0-9]+(\\.[0-9][0-9]*)?(e(\\+\\-)?[0-9]+)?)",
+			"match": "\\b([0-9]+(\\.[0-9][0-9]*)?(e(\\+|-)?[0-9]+)?)",
 			"captures": {
 				"1": {
 					"name": "constant.numeric.rtlola"
@@ -245,10 +245,13 @@
 					"match": "(<=|>=|<|>|&)"
 				},
 				{
-					"match": "\\.(aggregate)\\(",
+					"match": "\\.(aggregate)\\(\\s*((over|over\\_exactly)\\s*:\\s*((\\+|-)?[0-9]+(\\.[0-9][0-9]*)?(e(\\+|-)?[0-9]+)?(ns|μs|us|ms|s|min|h|d|w|a)))?",
 					"captures": {
 						"1": {
 							"name": "keyword.operator.access"
+						},
+						"4": {
+							"name": "constant.numeric.time.rtlola"
 						}
 					}
 				},

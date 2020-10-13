@@ -1,0 +1,86 @@
+{
+    "input stream declaration": {
+        "prefix": "input",
+        "body": [
+            "input ${1:name}: ${2|Bool,Int64,UInt64,Float64,String,Bytes|}\n"
+        ],
+        "description": "declare an input stream"
+    },
+    "output stream definition": {
+        "prefix": "output",
+        "body": [
+            "output ${1:name}${2| /*: inferred type*/,: Bool,: Int64,: UInt64,: Float64,: String,: Bytes|} ${3|/*@ inferred activation condition*/,@ ,@ 1Hz,@ 1kHz,@ (a\\|\\|b)&&c|} := ${4:expression}\n"
+        ],
+        "description": "define an output stream"
+    },
+    "trigger declaration": {
+        "prefix": "trigger",
+        "body": [
+            "trigger ${1:condition} ${2:\"${3:optional message}\"}\n"
+        ],
+        "description": "define a trigger"
+    },
+    "hold access": {
+        "prefix": ".hold",
+        "body": [
+            ".hold(or: ${1:default value}) "
+        ],
+        "description": "zero-order hold with default value"
+    },
+    "get access": {
+        "prefix": ".get",
+        "body": [
+            ".get().defaults(to: ${1:default value}) "
+        ],
+        "description": "optional access with default value"
+    },
+    "offset-based access": {
+        "prefix": ".offset",
+        "body": [
+            ".offset(by: ${1:-1}).defaults(to: ${2:default value}) "
+        ],
+        "description": "offset based stream access"
+    },
+    "aggregation over_exactly": {
+        "prefix": ".agg_exactly",
+        "body": [
+            ".aggregate(over_exactly: ${1:1s}, using: ${2|integral,sum,count,average,min,max,disjunction,conjunction|}).defaults(to: $3) "
+        ],
+        "description": "aggregation with over_exactly"
+    },
+    "aggregation": {
+        "prefix": ".agg",
+        "body": [
+            ".aggregate(over: ${1:1s}, using: ${2|integral,sum,count,average,min,max,disjunction,conjunction|})"
+        ],
+        "description": "aggregation (for min|max|average you need an additional `.defaults(to: _)`"
+    },
+    "defaults": {
+        "prefix": ".defaults",
+        "body": [
+            ".defaults(to: $1) "
+        ],
+        "description": "default expression"
+    },
+    "aggregation over_exactly discrete": {
+        "prefix": ".agg_exactly_discrete",
+        "body": [
+            ".aggregate(over_exactly_discrete: ${1:10}, using: ${2|integral,sum,count,average,min,max,disjunction,conjunction|}).defaults(to: $3) "
+        ],
+        "description": "aggregation with over_exactly_discrete"
+    },
+    "aggregation discrete": {
+        "prefix": ".agg_discrete",
+        "body": [
+            ".aggregate(over_discrete: ${1:10}, using: ${2|integral,sum,count,average,min,max,disjunction,conjunction|}) "
+        ],
+        "description": "aggregation with over_discrete (for min|max|average you need an additional `.defaults(to: _)`"
+    },
+    "if then else": {
+        "prefix": "if",
+        "body": [
+            "(if $1 then $2 else $3) "
+        ],
+        "description": "conditional branching"
+    }
+}
