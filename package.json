@@ -2,7 +2,7 @@
     "name": "rtlola",
     "displayName": "rtlola",
     "description": "Support for the stream-based specification language RTLola",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "rtlola-team",
     "engines": {
         "vscode": "^1.49.0"
