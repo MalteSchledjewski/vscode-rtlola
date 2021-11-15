@@ -5,11 +5,15 @@
     "version": "0.0.3",
     "publisher": "rtlola-team",
     "engines": {
-        "vscode": "^1.49.0"
+        "vscode": "^1.52.0"
     },
     "categories": [
         "Programming Languages"
     ],
+    "activationEvents": [
+        "onLanguage:rtlola"
+    ],
+    "main": "./client/out/extension",
     "contributes": {
         "languages": [
             {
@@ -38,7 +42,50 @@
                 "scopeName": "source.rtlola",
                 "path": "./snippets/snippets.json"
             }
-        ]
+        ],
+		"configuration": {
+			"type": "object",
+			"title": "RTLola configuration",
+			"properties": {
+				"rtlolaLS.maxNumberOfProblems": {
+					"scope": "resource",
+					"type": "number",
+					"default": 100,
+					"description": "Controls the maximum number of problems produced by the server."
+				},
+				"rtlolaLS.trace.server": {
+					"scope": "window",
+					"type": "string",
+					"enum": [
+						"off",
+						"messages",
+						"verbose"
+					],
+					"default": "off",
+					"description": "Traces the communication between VS Code and the language server."
+				}
+			}
+		}
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc --build",
+		"lint": "eslint ./client/src ./server/src --ext .ts,.tsx",
+		"postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
+        "watch": "tsc --build --watch"
+    },
+    "dependencies": {
+        "vscode-languageclient": "^7.0.0",
+        "ws": "^7.4.3"
+    },
+    "devDependencies": {
+        "@types/node": "^14.14.0",
+        "@types/vscode": "^1.60.0",
+        "@types/ws": "^7.4.0",
+        "@typescript-eslint/eslint-plugin": "^4.15.0",
+        "@typescript-eslint/parser": "^4.15.0",
+        "eslint": "^7.0.0",
+        "typescript": "^4.4.4"
     },
     "bugs": {
         "url": "https://github.com/MalteSchledjewski/vscode-rtlola/issues"

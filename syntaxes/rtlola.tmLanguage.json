@@ -9,6 +9,9 @@
 			"include": "#input"
 		},
 		{
+			"include": "#constant"
+		},
+		{
 			"include": "#output"
 		},
 		{
@@ -42,7 +45,7 @@
 				},
 				{
 					"name": "keyword.other.rtlola",
-					"match": "\\b(input|output|trigger|import)\\b"
+					"match": "\\b(input|output|trigger|import|constant)\\b"
 				}
 			]
 		},
@@ -88,6 +91,30 @@
 		"input": {
 			"name": "meta.input.rtlola",
 			"match": "\\b(input)(\\s+|(\\s*(/\\*((?!\\*/).)*\\*/)\\s*))([a-zA-Z][a-z_A-Z0-9]*)(\\s*(/\\*((?!\\*/).)*\\*/)?\\s*):(\\s*(/\\*((?!\\*/).)*\\*/)?\\s*)([a-zA-Z][a-zA-Z_0-9]*)(?=\\s|/)",
+			"captures": {
+				"1": {
+					"name": "keyword.other.rtlola"
+				},
+				"4": {
+					"name": "comment.block.rtlola"
+				},
+				"6": {
+					"name": "variable.other.rtlola"
+				},
+				"8": {
+					"name": "comment.block.rtlola"
+				},
+				"11": {
+					"name": "comment.block.rtlola"
+				},
+				"13": {
+					"name": "entity.name.type.rtlola"
+				}
+			}
+		},
+		"constant": {
+			"name": "meta.constant.rtlola",
+			"match": "\\b(constant)(\\s+|(\\s*(/\\*((?!\\*/).)*\\*/)\\s*))([a-zA-Z][a-z_A-Z0-9]*)(\\s*(/\\*((?!\\*/).)*\\*/)?\\s*):(\\s*(/\\*((?!\\*/).)*\\*/)?\\s*)([a-zA-Z][a-zA-Z_0-9]*)(?=\\s|/)",
 			"captures": {
 				"1": {
 					"name": "keyword.other.rtlola"

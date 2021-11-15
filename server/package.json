@@ -1,0 +1,21 @@
+{
+	"name": "rtlola-lsp-server",
+	"description": "A language server for RTLola.",
+	"version": "0.1.0",
+	"author": "Malte Schledjewski",
+	"license": "MIT",
+	"engines": {
+		"node": "*"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MalteSchledjewski/vscode-rtlola.git"
+	},
+	"dependencies": {
+		"vscode-languageserver": "^7.0.0",
+		"vscode-languageserver-textdocument": "^1.0.1",
+		"rtlola-wasm": "file:../../rtlola-wasm/pkg"
+	
+	},
+	"scripts": {}
+}
