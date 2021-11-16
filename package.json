@@ -2,13 +2,14 @@
     "name": "rtlola",
     "displayName": "rtlola",
     "description": "Support for the stream-based specification language RTLola",
-    "version": "0.0.3",
+    "version": "0.1.0",
     "publisher": "rtlola-team",
+    "icon": "rtlola_icon.png",
     "engines": {
         "vscode": "^1.52.0"
     },
     "categories": [
-        "Programming Languages"
+        "Programming Languages", "Snippets", "Linters"
     ],
     "activationEvents": [
         "onLanguage:rtlola"
@@ -76,11 +77,12 @@
     },
     "dependencies": {
         "vscode-languageclient": "^7.0.0",
-        "ws": "^7.4.3"
+        "ws": "^7.4.3",
+        "rtlola-wasm": "file:./rtlola-wasm/"
     },
     "devDependencies": {
         "@types/node": "^14.14.0",
-        "@types/vscode": "^1.60.0",
+        "@types/vscode": "^1.52.0",
         "@types/ws": "^7.4.0",
         "@typescript-eslint/eslint-plugin": "^4.15.0",
         "@typescript-eslint/parser": "^4.15.0",

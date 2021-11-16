@@ -23,62 +23,25 @@ export function activate(context: ExtensionContext) {
         }
 
         const uri = document.uri;
-        // Untitled files go to a default client.
-        if (uri.scheme === 'untitled' && !defaultClient) {
-            const debugOptions = { execArgv: ["--nolazy", "--inspect=6010"] };
-            const serverOptions = {
-                run: { module, transport: TransportKind.ipc },
-                debug: { module, transport: TransportKind.ipc, options: debugOptions }
-            };
-            const clientOptions: LanguageClientOptions = {
-                documentSelector: [
-                    { scheme: 'untitled', language: 'rtlola' }
-                ],
-                diagnosticCollectionName: 'rtlola-lsp',
-                outputChannel: outputChannel
-            };
-            defaultClient = new LanguageClient('rtlola-lsp', 'RTLola Language Server', serverOptions, clientOptions);
-            defaultClient.start();
-            return;
-        }
-        const folder = Workspace.getWorkspaceFolder(uri);
-        // Files outside a folder can't be handled. This might depend on the language.
-        // Single file languages like JSON might handle files outside the workspace folders.
-        if (!folder) {
-            return;
-        }
-
-        if (!clients.has(folder.uri.toString())) {
-            const debugOptions = { execArgv: ["--nolazy", `--inspect=${6011 + clients.size}`] };
-            const serverOptions = {
-                run: { module, transport: TransportKind.ipc },
-                debug: { module, transport: TransportKind.ipc, options: debugOptions }
-            };
-            const clientOptions: LanguageClientOptions = {
-                documentSelector: [
-                    { scheme: 'file', language: 'plaintext', pattern: `${folder.uri.fsPath}/**/*` }
-                ],
-                diagnosticCollectionName: 'lsp-multi-server-example',
-                workspaceFolder: folder,
-                outputChannel: outputChannel
-            };
-            const client = new LanguageClient('rtlola-lsp', 'RTLola Language Server', serverOptions, clientOptions);
-            client.start();
-            clients.set(folder.uri.toString(), client);
-        }
+        const debugOptions = { execArgv: ["--nolazy", "--inspect=6009"] };
+        const serverOptions = {
+            run: { module, transport: TransportKind.ipc },
+            debug: { module, transport: TransportKind.ipc, options: debugOptions }
+        };
+        const clientOptions: LanguageClientOptions = {
+            documentSelector: [
+                { scheme: 'untitled', language: 'rtlola' },
+                { scheme: 'file', language: 'rtlola' }
+            ],
+            diagnosticCollectionName: 'rtlola-lsp',
+            outputChannel: outputChannel
+        };
+        defaultClient = new LanguageClient('rtlola-lsp', 'RTLola Language Server', serverOptions, clientOptions);
+        defaultClient.start();
     }
 
     Workspace.onDidOpenTextDocument(didOpenTextDocument);
     Workspace.textDocuments.forEach(didOpenTextDocument);
-    Workspace.onDidChangeWorkspaceFolders((event) => {
-        for (const folder of event.removed) {
-            const client = clients.get(folder.uri.toString());
-            if (client) {
-                clients.delete(folder.uri.toString());
-                client.stop();
-            }
-        }
-    });
 }
 
 export function deactivate(): Thenable<void> {

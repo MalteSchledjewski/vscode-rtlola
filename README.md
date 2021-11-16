@@ -42,13 +42,13 @@ input velo
 
 ## Release Notes
 
-
-### 0.0.2 - 2020-10-13
-### Added
-- Basic snippets
-- Highlighting of time literals in `aggregate(over/over_exactly: $time literal$,...` 
-### Fixed
-- Handling of plus and minus within numeric literals (leading & in front of the exponent)
+### [0.1.0] - 2021-11-16
+#### Added
+- Added tokenization for constant declarations
+- Added basic LSP using the current RTLola frontend
+  - "Go to definition" should work in most cases but only for files that parse correctly
+  - Diagnostics are shown in VS Code
+  - rudimentary completions (all constants, streams, and parameter in the current scope)
 
 Read the [full changelog](https://github.com/MalteSchledjewski/vscode-rtlola/blob/main/CHANGELOG.md)
 

@@ -14,7 +14,7 @@
 	"dependencies": {
 		"vscode-languageserver": "^7.0.0",
 		"vscode-languageserver-textdocument": "^1.0.1",
-		"rtlola-wasm": "file:../../rtlola-wasm/pkg"
+		"rtlola-wasm": "file:../rtlola-wasm"
 	
 	},
 	"scripts": {}
