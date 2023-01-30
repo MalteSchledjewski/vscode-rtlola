@@ -1,28 +1,19 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es2019",
-        "lib": [
-            "ES2019"
-        ],
-        "outDir": "out",
-        "sourceMap": true,
-        "strict": true,
-        "rootDir": "src"
-    },
-    "include": [
-        "src"
-    ],
-    "exclude": [
-        "node_modules",
-        ".vscode-test"
-    ],
-    "references": [
-        {
-            "path": "./client"
-        },
-        {
-            "path": "./server"
-        }
-    ]
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es2020",
+		"lib": ["es2020"],
+		"outDir": "out",
+		"rootDir": "./",
+		"moduleResolution": "node",
+		"strict": true,
+		"sourceMap": true
+	},
+	"include": [
+		"./client/src/**/*.ts","./server/src/**/*.ts"
+	],
+	"exclude": [
+		"node_modules",
+		".vscode-test"
+	]
 }

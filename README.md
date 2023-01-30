@@ -1,8 +1,6 @@
-# rtlola
+# RTLola
 
 This extension provides support for the stream-based specification language [RTLola](http://rtlola.org/).
-
-Currently only basic highlighting and snippets are provided but we will grow the feature set.
 
 ## Features
 
@@ -10,47 +8,52 @@ Currently only basic highlighting and snippets are provided but we will grow the
 
 ![highlighting](https://github.com/MalteSchledjewski/vscode-rtlola/raw/main/images/highlighting.PNG)
 
-- snippets
-    - `input`
+- snippets such as
+
+  - `input`
     ![input snippet animation](https://github.com/MalteSchledjewski/vscode-rtlola/raw/main/images/snippets_input.apng)
-    - `output`
+  - `output`
     ![output snippet animation](https://github.com/MalteSchledjewski/vscode-rtlola/raw/main/images/snippets_output.apng)
-    - `trigger`
+  - `trigger`
     ![trigger snippet animation](https://github.com/MalteSchledjewski/vscode-rtlola/raw/main/images/snippets_trigger.apng)
-    - `.hold`
+  - `.hold`
     ![hold snippet animation](https://github.com/MalteSchledjewski/vscode-rtlola/raw/main/images/snippets_hold.apng)
-    - `.get`
+  - `.get`
     ![get snippet animation](https://github.com/MalteSchledjewski/vscode-rtlola/raw/main/images/snippets_get.apng)
-    - `.offset`
+  - `.offset`
     ![get snippet animation](https://github.com/MalteSchledjewski/vscode-rtlola/raw/main/images/snippets_offset.apng)
-    - `.agg`, `.agg_discrete`, `.defaults`
+  - `.agg`, `.agg_discrete`, `.defaults`
     ![agg, agg_discrete and defaults snippet animation](https://github.com/MalteSchledjewski/vscode-rtlola/raw/main/images/snippets_agg_agg_discrete_defaults.apng)
-    - `.agg_exactly`, `.agg_exactly_discrete`
+  - `.agg_exactly`, `.agg_exactly_discrete`
     ![agg_exactly and agg_exactly_discrete snippet animation](https://github.com/MalteSchledjewski/vscode-rtlola/raw/main/images/snippets_agg_exactly_agg_exactly_discrete.apng)
-    - `if`
+  - `if`
     ![if snippet animation](https://github.com/MalteSchledjewski/vscode-rtlola/raw/main/images/snippets_offset.apng)
------------------------------------------------------------------------------------------------------------
+
+- inlay hints showing the inferred types
+- go to definition
+- show errors
+- information on hover
+
+---
 
 ## Known Issues
 
 ```rtlola
 input velo
     : Float64 // this does not highlight because the grammar is restricted to only one line
-``` 
+```
 
------------------------------------------------------------------------------------------------------------
+---
 
 ## Release Notes
 
-### [0.1.0] - 2021-11-16
-#### Added
-- Added tokenization for constant declarations
-- Added basic LSP using the current RTLola frontend
-  - "Go to definition" should work in most cases but only for files that parse correctly
-  - Diagnostics are shown in VS Code
-  - rudimentary completions (all constants, streams, and parameter in the current scope)
+## [0.2.0] - 2023-01-30
+
+### Added
+
+- Provide inlay hints with inferred stream type
+- Provide hover information
 
 Read the [full changelog](https://github.com/MalteSchledjewski/vscode-rtlola/blob/main/CHANGELOG.md)
 
------------------------------------------------------------------------------------------------------------
-
+---

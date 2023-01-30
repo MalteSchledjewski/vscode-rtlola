@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1920 1920" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g id="RTLola" transform="matrix(1,0,0,1,0,-17.6137)">
+        <g id="Body" transform="matrix(1,0,0,1,0,244.404)">
+            <g id="Body1" serif:id="Body" transform="matrix(0.935848,0,0,0.935848,61.586,60.6892)">
+                <g transform="matrix(1.43666,0,0,1.43666,-557.757,-659.04)">
+                    <path d="M1748.15,928.246L1561.75,928.246L1561.73,650.636L925.33,650.636" style="fill:none;stroke:black;stroke-width:46.49px;"/>
+                </g>
+                <g transform="matrix(1.43666,0,0,1.43666,-557.757,-659.04)">
+                    <path d="M831.547,650.636L551.143,650.636L551.143,928.246L364.738,928.263" style="fill:none;stroke:black;stroke-width:46.49px;"/>
+                </g>
+                <g transform="matrix(1.43666,0,0,-1.43666,-557.757,2580.96)">
+                    <path d="M1748.15,928.246L1561.75,928.246L1561.73,650.636L551.143,650.636L551.143,928.246L364.738,928.263" style="fill:none;stroke:black;stroke-width:46.49px;"/>
+                </g>
+            </g>
+            <g id="Helping-Hands" serif:id="Helping Hands">
+                <g transform="matrix(1.59255,0,0,1.59255,-381.231,-340.631)">
+                    <path d="M739.162,1098.92C800.142,1094.07 868.261,1056.23 914.984,1001.96C980.212,926.194 1034.91,821.695 1168.71,818.489C1292.64,815.519 1413.61,817.142 1413.61,817.142" style="fill:none;stroke:black;stroke-width:65.41px;"/>
+                </g>
+                <g transform="matrix(-1.59255,0,0,-1.59255,2301.23,2260.63)">
+                    <path d="M739.162,1098.92C800.142,1094.07 868.261,1056.23 914.984,1001.96C980.212,926.194 1034.91,821.695 1168.71,818.489C1292.64,815.519 1413.61,817.142 1413.61,817.142" style="fill:none;stroke:black;stroke-width:65.41px;"/>
+                </g>
+                <g transform="matrix(-1.59255,0,0,-1.59255,2479.18,2486.78)">
+                    <path d="M739.162,1098.92C800.142,1094.07 868.261,1056.23 914.984,1001.96C980.212,926.194 1034.91,821.695 1168.71,818.489" style="fill:none;stroke:black;stroke-width:65.41px;"/>
+                </g>
+            </g>
+        </g>
+        <g id="Lock" transform="matrix(0.757345,0,0,0.7608,301.849,19.2275)">
+            <path d="M1268.28,541.589L1268.28,447.33L1268.26,447.33C1267.62,265.747 1089.12,118.696 869.016,118.696C648.914,118.696 470.411,265.747 469.77,447.33L469.768,447.33L469.768,714.677" style="fill:none;stroke:black;stroke-width:82.34px;"/>
+        </g>
+    </g>
+</svg>

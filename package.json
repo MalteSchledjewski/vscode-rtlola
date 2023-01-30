@@ -2,19 +2,22 @@
     "name": "rtlola",
     "displayName": "rtlola",
     "description": "Support for the stream-based specification language RTLola",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "publisher": "rtlola-team",
     "icon": "rtlola_icon.png",
     "engines": {
-        "vscode": "^1.52.0"
+        "vscode": "^1.69.0"
     },
     "categories": [
-        "Programming Languages", "Snippets", "Linters"
+        "Programming Languages",
+        "Snippets",
+        "Linters"
     ],
     "activationEvents": [
         "onLanguage:rtlola"
     ],
-    "main": "./client/out/extension",
+    "license": "MIT",
+    "main": "./dist/extension",
     "contributes": {
         "languages": [
             {
@@ -27,7 +30,11 @@
                     ".lola",
                     ".rtlola"
                 ],
-                "configuration": "./language-configuration.json"
+                "configuration": "./language-configuration.json",
+                "icon": {
+                    "light": "./icons/rtlola_light.svg",
+                    "dark": "./icons/rtlola_dark.svg"
+                }
             }
         ],
         "grammars": [
@@ -37,57 +44,55 @@
                 "path": "./syntaxes/rtlola.tmLanguage.json"
             }
         ],
-        "snippets": [
-            {
-                "language": "rtlola",
-                "scopeName": "source.rtlola",
-                "path": "./snippets/snippets.json"
+        "configuration": {
+            "type": "object",
+            "title": "RTLola configuration",
+            "properties": {
+                "rtlolaLS.maxNumberOfProblems": {
+                    "scope": "resource",
+                    "type": "number",
+                    "default": 100,
+                    "description": "Controls the maximum number of problems produced by the server."
+                },
+                "rtlolaLS.trace.server": {
+                    "scope": "window",
+                    "type": "string",
+                    "enum": [
+                        "off",
+                        "messages",
+                        "verbose"
+                    ],
+                    "default": "off",
+                    "description": "Traces the communication between VS Code and the language server."
+                }
             }
-        ],
-		"configuration": {
-			"type": "object",
-			"title": "RTLola configuration",
-			"properties": {
-				"rtlolaLS.maxNumberOfProblems": {
-					"scope": "resource",
-					"type": "number",
-					"default": 100,
-					"description": "Controls the maximum number of problems produced by the server."
-				},
-				"rtlolaLS.trace.server": {
-					"scope": "window",
-					"type": "string",
-					"enum": [
-						"off",
-						"messages",
-						"verbose"
-					],
-					"default": "off",
-					"description": "Traces the communication between VS Code and the language server."
-				}
-			}
-		}
+        }
     },
     "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc --build",
-		"lint": "eslint ./client/src ./server/src --ext .ts,.tsx",
-		"postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
-        "watch": "tsc --build --watch"
+        "vscode:prepublish": "webpack --mode production",
+        "webpack": "webpack --mode development",
+        "webpack-dev": "webpack --mode development --watch",
+        "test-compile": "tsc -p ./",
+        "lint": "eslint ./client/src ./server/src --ext .ts,.tsx",
+        "package": "pnpm vsce package --no-dependencies",
+        "publish": "pnpm vsce publish --no-dependencies"
     },
     "dependencies": {
-        "vscode-languageclient": "^7.0.0",
-        "ws": "^7.4.3",
-        "rtlola-wasm": "file:./rtlola-wasm/"
+        "rtlola-language-server-integration": "link:../rtlola-language-server/integration",
+        "vscode-languageclient": "^8.0.2",
+        "vscode-languageserver": "^8.0.2"
     },
     "devDependencies": {
-        "@types/node": "^14.14.0",
-        "@types/vscode": "^1.52.0",
-        "@types/ws": "^7.4.0",
-        "@typescript-eslint/eslint-plugin": "^4.15.0",
-        "@typescript-eslint/parser": "^4.15.0",
-        "eslint": "^7.0.0",
-        "typescript": "^4.4.4"
+        "@types/node": "^16.11.7",
+        "@types/vscode": "^1.69.0",
+        "@typescript-eslint/eslint-plugin": "^5.49.0",
+        "@typescript-eslint/parser": "^5.49.0",
+        "copy-webpack-plugin": "^11.0.0",
+        "eslint": "^8.32.0",
+        "ts-loader": "^9.4.2",
+        "typescript": "^4.9.4",
+        "webpack": "^5.75.0",
+        "webpack-cli": "^5.0.1"
     },
     "bugs": {
         "url": "https://github.com/MalteSchledjewski/vscode-rtlola/issues"

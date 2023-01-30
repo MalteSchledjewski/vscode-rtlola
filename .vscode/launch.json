@@ -13,24 +13,23 @@
             "args": [
                 "--extensionDevelopmentPath=${workspaceRoot}"
             ],
-            "stopOnEntry": false,
-            "sourceMaps": true,
+			"autoAttachChildProcesses": true,
             "outFiles": [
-                "${workspaceRoot}/client/out/**/*.js"
+                "${workspaceFolder}/dist/**/*.js"
             ],
-            "preLaunchTask": "npm: watch"
-        },
-        {
-            "type": "node",
-            "request": "attach",
-            "name": "Attach to Server 6009",
-            "address": "localhost",
-            "protocol": "inspector",
-            "port": 6009,
-            "sourceMaps": true,
-            "outFiles": [
-                "${workspaceRoot}/server/out/**/*.js"
-            ]
+            "preLaunchTask": "npm: webpack"
         }
+        // {
+        //     "type": "node",
+        //     "request": "attach",
+        //     "name": "Attach to Server 6009",
+        //     "address": "localhost",
+        //     "protocol": "inspector",
+        //     "port": 6009,
+        //     "sourceMaps": true,
+        //     "outFiles": [
+        //         "${workspaceFolder}/dist/**/*.js"
+        //     ]
+        // }
     ]
 }

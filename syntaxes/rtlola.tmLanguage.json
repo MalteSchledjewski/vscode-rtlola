@@ -9,6 +9,9 @@
 			"include": "#input"
 		},
 		{
+			"include": "#include"
+		},
+		{
 			"include": "#constant"
 		},
 		{
@@ -34,18 +37,21 @@
 		},
 		{
 			"include": "#number"
+		},
+		{
+			"include": "#expression"
 		}
 	],
 	"repository": {
 		"keywords": {
 			"patterns": [
 				{
-					"name": "keyword.control.rtlola",
+					"name": "keyword.other.rtlola",
 					"match": "\\b(if|then|else)\\b"
 				},
 				{
 					"name": "keyword.other.rtlola",
-					"match": "\\b(input|output|trigger|import|constant)\\b"
+					"match": "\\b(input|output|trigger|import|constant|spawn|eval|close|with|when)\\b"
 				}
 			]
 		},
@@ -78,7 +84,7 @@
 			"match": "\\b(import)(\\s+|(\\s*(/\\*((?!\\*/).)*\\*/)\\s*))([a-zA-Z][a-z_A-Z0-9]*)(?=\\s|/)",
 			"captures": {
 				"1": {
-					"name": "keyword.other.rtlola"
+					"name": "keyword.other.import.rtlola"
 				},
 				"4": {
 					"name": "comment.block.rtlola"
@@ -88,76 +94,148 @@
 				}
 			}
 		},
-		"input": {
-			"name": "meta.input.rtlola",
-			"match": "\\b(input)(\\s+|(\\s*(/\\*((?!\\*/).)*\\*/)\\s*))([a-zA-Z][a-z_A-Z0-9]*)(\\s*(/\\*((?!\\*/).)*\\*/)?\\s*):(\\s*(/\\*((?!\\*/).)*\\*/)?\\s*)([a-zA-Z][a-zA-Z_0-9]*)(?=\\s|/)",
+		"include": {
+			"name": "meta.include.rtlola",
+			"match": "\\b((include)|(inclu?d?e?))\\s*((\\w+(\\\")?)|(\\\"((\\\\\\\\)|(\\\\\\\")|(?!\\\").)*\\\")|(\\\"((\\\\\\\\)|(\\\\\\\")|(?!\\\").)*))",
 			"captures": {
 				"1": {
-					"name": "keyword.other.rtlola"
+					"name": "keyword.other.include.rtlola"
+				},
+				"3": {
+					"name": "invalid.illegal.rtlola"
 				},
 				"4": {
-					"name": "comment.block.rtlola"
+					"name": "string.quoted.double.rtlola"
 				},
-				"6": {
-					"name": "variable.other.rtlola"
-				},
-				"8": {
-					"name": "comment.block.rtlola"
+				"5": {
+					"name": "invalid.illegal.rtlola"
 				},
 				"11": {
-					"name": "comment.block.rtlola"
+					"name": "invalid.illegal.rtlola"
+				}
+			}
+		},
+		"input": {
+			"name": "meta.input.rtlola",
+			"match": "\\b((input)|(inpu?t?))\\s+(([a-zA-Z][a-z_A-Z\\d]*\\b)|([\\w\\d]*))?\\s*(\\(((([a-zA-Z][a-z_A-Z\\d]*\\b)|([\\w\\d]*))\\s*(:\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??)|\\(\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?(\\s*,\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?)*\\s*\\)?)?)?)?(,((([a-zA-Z][a-z_A-Z\\d]*\\b)|([\\w\\d]*))?\\s*(:\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??)|\\(\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?(\\s*,\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?)*\\s*\\)?)?)?))*\\))?\\s*:\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??)|\\(\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?(\\s*,\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?)*\\s*\\)?)?(\\s*,\\s*(([a-zA-Z][a-z_A-Z\\d]*\\b)|([\\w\\d]*))?\\s*(\\(((([a-zA-Z][a-z_A-Z\\d]*\\b)|([\\w\\d]*))?\\s*(:\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??)|\\(\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?(\\s*,\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?)*\\s*\\)?)?)?)?(,((([a-zA-Z][a-z_A-Z\\d]*\\b)|([\\w\\d]*))?\\s*(:\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??)|\\(\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?(\\s*,\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?)*\\s*\\)?)?)?))*\\))?\\s*:\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??)|\\(\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?(\\s*,\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?)*\\s*\\)?)?)*",
+			"captures": {
+				"1": {
+					"name": "keyword.other.input.rtlola"
+				},
+				"3": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"4": {
+					"name": "variable.other.rtlola"
+				},
+				"6": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"7": {
+					"name": "meta.parameterlist.rtlola"
+				},
+				"9": {
+					"name": "variable.parameter.rtlola"
+				},
+				"11": {
+					"name": "invalid.illegal.rtlola"
 				},
 				"13": {
 					"name": "entity.name.type.rtlola"
+				},
+				"15": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"25": {
+					"name": "variable.parameter.rtlola"
+				},
+				"27": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"29": {
+					"name": "entity.name.type.rtlola"
+				},
+				"31": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"39": {
+					"name": "entity.name.type.rtlola"
+				},
+				"41": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"50": {
+					"name": "variable.other.rtlola"
+				},
+				"52": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"53": {
+					"name": "meta.parameterlist.rtlola"
+				},
+				"55": {
+					"name": "variable.parameter.rtlola"
+				},
+				"57": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"59": {
+					"name": "entity.name.type.rtlola"
+				},
+				"61": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"71": {
+					"name": "variable.parameter.rtlola"
+				},
+				"73": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"75": {
+					"name": "entity.name.type.rtlola"
+				},
+				"77": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"85": {
+					"name": "entity.name.type.rtlola"
+				},
+				"87": {
+					"name": "invalid.illegal.rtlola"
 				}
 			}
 		},
 		"constant": {
 			"name": "meta.constant.rtlola",
-			"match": "\\b(constant)(\\s+|(\\s*(/\\*((?!\\*/).)*\\*/)\\s*))([a-zA-Z][a-z_A-Z0-9]*)(\\s*(/\\*((?!\\*/).)*\\*/)?\\s*):(\\s*(/\\*((?!\\*/).)*\\*/)?\\s*)([a-zA-Z][a-zA-Z_0-9]*)(?=\\s|/)",
-			"captures": {
-				"1": {
-					"name": "keyword.other.rtlola"
-				},
-				"4": {
-					"name": "comment.block.rtlola"
-				},
-				"6": {
-					"name": "variable.other.rtlola"
-				},
-				"8": {
-					"name": "comment.block.rtlola"
-				},
-				"11": {
-					"name": "comment.block.rtlola"
-				},
-				"13": {
-					"name": "entity.name.type.rtlola"
-				}
-			}
-		},
-		"output": {
-			"name": "statement.output.rtlola",
-			"begin": "(output)(\\s+|(\\s*(/\\*((?!\\*/).)*\\*/)\\s*))([a-zA-Z][a-z_A-Z0-9]*)((\\s*(/\\*((?!\\*/).)*\\*/)?\\s*):(\\s*(/\\*((?!\\*/).)*\\*/)?\\s*)([a-zA-Z][a-z_A-Z0-9]*))?",
-			"end": "(?=\\b(input|output|trigger)\\b)",
+			"begin": "\\b((constant)|(consta?n?t?))\\s+(([a-zA-Z][a-z_A-Z\\d]*\\b)|([\\w\\d]*))?\\s*((:(?!=)\\s*)?(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??)|\\(\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?(\\s*,\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?)*\\s*\\)?)?)?\\s*(:=)?",
+			"end": "$",
 			"beginCaptures": {
 				"1": {
-					"name": "keyword.other.rtlola"
+					"name": "keyword.other.constant.rtlola"
+				},
+				"3": {
+					"name": "invalid.illegal.rtlola"
 				},
 				"4": {
-					"name": "comment.block.rtlola"
-				},
-				"6": {
 					"name": "variable.other.rtlola"
 				},
-				"9": {
-					"name": "comment.block.rtlola"
+				"6": {
+					"name": "invalid.illegal.rtlola"
 				},
-				"12": {
-					"name": "comment.block.rtlola"
+				"9": {
+					"name": "entity.name.type.rtlola"
+				},
+				"11": {
+					"name": "invalid.illegal.rtlola"
 				},
 				"14": {
-					"name": "entity.name.type.rtlola"
+					"name": "invalid.illegal.rtlola"
+				},
+				"18": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"19": {
+					"name": "keyword.operator.assignment.rtlola"
 				}
 			},
 			"patterns": [
@@ -177,9 +255,6 @@
 					"include": "#line_comment"
 				},
 				{
-					"include": "#frequency"
-				},
-				{
 					"include": "#number"
 				},
 				{
@@ -187,13 +262,82 @@
 				}
 			]
 		},
+		"output": {
+			"name": "statement.output.rtlola",
+			"match": "\\b((output)|(outpu?t?))\\s+(([a-zA-Z][a-z_A-Z\\d]*\\b)|([\\w\\d]*))?\\s*(\\(((([a-zA-Z][a-z_A-Z\\d]*\\b)|([\\w\\d]*))\\s*(:\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??)|\\(\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?(\\s*,\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?)*\\s*\\)?)?)?)?(,((([a-zA-Z][a-z_A-Z\\d]*\\b)|([\\w\\d]*))?\\s*(:\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??)|\\(\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?(\\s*,\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?)*\\s*\\)?)?)?))*\\))?\\s*:?\\s*(?!((spawn)|(eval)|(close)))(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??)|\\(\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?(\\s*,\\s*(\\b_\\b|([a-zA-Z][a-z_A-Z\\d]*\\b\\??)|([\\w\\d]+\\??))?)*\\s*\\)?)?",
+			"captures": {
+				"1": {
+					"name": "keyword.other.output.rtlola"
+				},
+				"3": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"4": {
+					"name": "variable.other.rtlola"
+				},
+				"6": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"9": {
+					"name": "variable.parameter.rtlola"
+				},
+				"11": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"13": {
+					"name": "entity.name.type.rtlola"
+				},
+				"15": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"18": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"22": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"25": {
+					"name": "variable.parameter.rtlola"
+				},
+				"27": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"29": {
+					"name": "entity.name.type.rtlola"
+				},
+				"31": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"34": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"38": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"43": {
+					"name": "entity.name.type.rtlola"
+				},
+				"45": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"48": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"52": {
+					"name": "invalid.illegal.rtlola"
+				},
+				"54": {
+					"name": "invalid.illegal.rtlola"
+				}
+			}
+		},
 		"trigger": {
 			"name": "statement.trigger.rtlola",
 			"begin": "(trigger)",
 			"end": "(?=\\b(input|output|trigger)\\b)",
 			"beginCaptures": {
 				"1": {
-					"name": "keyword.other.rtlola"
+					"name": "keyword.other.trigger.rtlola"
 				}
 			},
 			"patterns": [
