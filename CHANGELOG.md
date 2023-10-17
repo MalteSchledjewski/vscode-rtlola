@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [0.3.0] - 2023-10-17
+
+- fixed error that started a LS for every open RTLola file
+- update to current RTLola language
+
 ## [0.2.0] - 2023-01-30
 
 ### Added
@@ -40,9 +45,10 @@
 
 - Initial release
 
-[unreleased]: https://github.com/MalteSchledjewski/vscode-rtlola/compare/v0.2.0...HEAD
+[unreleased]: https://github.com/MalteSchledjewski/vscode-rtlola/compare/v0.3.0...HEAD
 [0.0.1]: https://github.com/MalteSchledjewski/vscode-rtlola/releases/tag/v0.0.1
 [0.0.2]: https://github.com/MalteSchledjewski/vscode-rtlola/releases/tag/v0.0.2
 [0.0.3]: https://github.com/MalteSchledjewski/vscode-rtlola/releases/tag/v0.0.3
 [0.1.0]: https://github.com/MalteSchledjewski/vscode-rtlola/releases/tag/v0.1.0
 [0.2.0]: https://github.com/MalteSchledjewski/vscode-rtlola/releases/tag/v0.2.0
+[0.3.0]: https://github.com/MalteSchledjewski/vscode-rtlola/releases/tag/v0.3.0

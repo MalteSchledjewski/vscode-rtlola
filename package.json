@@ -2,7 +2,7 @@
     "name": "rtlola",
     "displayName": "rtlola",
     "description": "Support for the stream-based specification language RTLola",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "publisher": "rtlola-team",
     "icon": "rtlola_icon.png",
     "engines": {
