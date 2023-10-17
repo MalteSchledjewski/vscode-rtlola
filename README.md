@@ -47,12 +47,10 @@ input velo
 
 ## Release Notes
 
-## [0.2.0] - 2023-01-30
+## [0.3.0] - 2023-10-17
 
-### Added
-
-- Provide inlay hints with inferred stream type
-- Provide hover information
+- fixed error that started a LS for every open RTLola file
+- update to current RTLola language
 
 Read the [full changelog](https://github.com/MalteSchledjewski/vscode-rtlola/blob/main/CHANGELOG.md)
 
